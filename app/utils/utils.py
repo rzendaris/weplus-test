@@ -5,14 +5,13 @@ from config import Config
 class CustomUtils:
 
     def __init__(self):
-        pass
+        self.max_number = int(Config.MAX_NUMBER)
+        self.min_number = 0
+        super(CustomUtils, self).__init__()
 
-    @staticmethod
-    def generate_random_number(number_collection):
-        number = random.randint(0, int(Config.MAX_NUMBER))
-        if len(number_collection) <= int(Config.MAX_NUMBER):
-            if any(x['number'] == number for x in number_collection):
-                number = CustomUtils.generate_random_number(number_collection)
-        else:
-            number = -1
+    def generate_random_number(self, list_number):
+        number = -1
+        if len(list_number) > 0:
+            index = int(len(list_number) / 2)
+            number = list_number[index]['number']
         return number

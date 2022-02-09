@@ -4,6 +4,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import Config, DevelopmentConfig
 from app.connection.db import Database
+from app.utils.utils import CustomUtils
 from logging.handlers import RotatingFileHandler
 
 # app config
@@ -13,6 +14,12 @@ bootstrap = Bootstrap(app)
 
 # create database
 Database.create_db()
+app.db = Database()
+app.db.delete_read_my_mind()
+app.db.create_numbers()
+
+# utils
+app.utils = CustomUtils()
 
 from app.errors import bp as errors_bp
 from app.fizzbuzz import bp as fizzbuzz_bp
