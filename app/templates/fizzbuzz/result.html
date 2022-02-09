@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="container table-responsive">
+  <table class="table table-bordered table-hover table-condensed text-center">
+    <thead class="thead-dark">
+			<tr style="color:#337AC7">
+				<th class="text-center">Number</th>
+				<th class="text-center">Result</th>
+			</tr>
+    </thead>
+    {% for seq in numbers %}
+    <tbody style="height: 10px">
+			<tr>
+				<td class="c1">{{ loop.index - 1 }}</td>
+				{% if seq is number %}
+					<td class="c2">{{ seq }}
+				{% else %}
+					<td class="c2" style="color:#337AC7"><b>{{ seq }}</b>
+				{% endif %}
+				</td>
+			</tr>
+		</tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

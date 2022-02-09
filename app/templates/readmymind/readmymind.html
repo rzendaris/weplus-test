@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+<p>
+	Read My Mind!
+</p><br>
+
+{{ wtf.quick_form(form) }}
+
+<p>
+	History
+</p><br>
+
+<div class="container table-responsive">
+  <table class="table table-bordered table-hover table-condensed text-center">
+    <thead class="thead-dark">
+			<tr style="color:#337AC7">
+				<th class="text-center">Number</th>
+				<th class="text-center">Answer</th>
+			</tr>
+    </thead>
+	<tbody style="height: 10px">
+		{% if count_data > 0 %}
+			{% for read_my_mind in data %}
+					<tr>
+						<td class="c1">{{ read_my_mind['number'] }}</td>
+						<td class="c2">{{ read_my_mind['answer'] }}</td>
+					</tr>
+			{% endfor %}
+		{% endif %}
+	</tbody>
+  </table>
+</div>
+{% endblock %}
